@@ -1,7 +1,7 @@
 import React from 'react'
 import "./contact.css"
 import PropTypes from 'prop-types'
-
+import Contact from './contact'
 
 const users = [
   {
@@ -33,31 +33,12 @@ const users = [
 
 
 const ContactList = () =>{
-  return (
-    <div>
-     { users.map(user =>(  
-     <div className="Contact">
-        <img className="avatar" src={user.avatar} alt={user.name} />
-        <div>
-          <p className="name"> {user.name}</p>
-
-              { user.online ?  (
-        <div className="status"> 
-              <i className="status-online"/>
-              <p className="status-text" > online </p>
-        </div>):(
-          <div className="status" > 
-              <i className="status-offline"/>
-              <p className="status-text" > offline </p>         
-          </div>   )     
-
-              } 
-        
-        </div>
-        
-    </div>))
-    }
-    </div>
+  return(
+    <>
+    {users.map(user=>(
+      <Contact name={user.name} avatar={user.avatar} online={user.online} />
+    )) }
+    </>
   )
 }
 
